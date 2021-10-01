@@ -1,0 +1,31 @@
+Proyek 2. 17 september 2021
+Perbaiki ide mitra diagram konteks tugas
+fitur tugas
+flowchart transaksi utama tugas
+alur fungsi (komunikasi antar user)
+bikin ERD
+pekan ke 4 fiks in pembagian tuga dan ide nya.
+1.Tuliskan perbaikan deskripsi ide Anda dengan jelas dan lebih mendetail, gambarkan juga lembaga, toko, karangtaruna atau institusi dll yang akan menjadi mitra Anda. Ide diharapkan lebih kompleks dari proyek 1 atau mudahnya meyelesaikan permasalahan utama pada mitra yang memiliki transakasi data antar user
+2.Fiksasi List Fungsi - fungsi antar role user dan perbaiki backlog atau pekerjaan antar mahasiswa
+3.buatlah flowchat proses trasaksi data pada fungsi utama
+NB :  diunggah oleh ketua kelompok
+MEMBUAT PROPOSAL
+Rancangan Perpustakaan 
+-> Admin+Pepustakawan
+*Admin ke system
+ Login
+ Menambahkan buku
+ Pendataan buku
+ Data siswa
+*Perpustakawan ke system
+ Login
+ Register
+ Peminjaman
+ Pengembalian
+Analisis 
+ 
+ 
+  
+
+
+
