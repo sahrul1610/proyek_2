@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col-xs-12">
-        <p><a href="/petugas/add" class=" btn btn-primary btn-sm"style="width: 150px;">Tambah @yield('title')</a></p>
+        <p><a href="/transaksi/form_peminjaman" class=" btn btn-primary btn-sm"style="width: 150px;">Tambah @yield('title')</a></p>
       <div class="box">
         <div class="box-header">
           <h3 class="box-title">data @yield('title')</h3>

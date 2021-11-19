@@ -82,14 +82,17 @@ Route::group(["middleware" => "admin"], function() {
     });
 });
 */
-    Route::prefix("/role")->group(function() {
-        Route::get("/", [RoleController::class, 'index'])->name('role');
-        Route::get("/add", [RoleController::class, 'add']);
-        Route::post("/insert", [RoleController::class, 'insert']);
-        Route::post("/update", [RoleController::class, 'update']);
-        Route::get("/edit/{id}", [RoleController::class, 'edit']);
-        Route::get("/hapus/{id}", [RoleController::class, 'hapus']);
-    });
+Route::get("/transaksi/form_peminjaman", [TransaksiController::class, "form_peminjaman"]);
+Route::post("/transaksi/simpan_peminjaman", [TransaksiController::class, "simpan_peminjaman"]);
+
+Route::prefix("/role")->group(function() {
+    Route::get("/", [RoleController::class, 'index'])->name('role');
+    Route::get("/add", [RoleController::class, 'add']);
+    Route::post("/insert", [RoleController::class, 'insert']);
+    Route::post("/update", [RoleController::class, 'update']);
+    Route::get("/edit/{id}", [RoleController::class, 'edit']);
+    Route::get("/hapus/{id}", [RoleController::class, 'hapus']);
+});
 
 //Route::view('/anggota', 'v_anggota');
 //Route::view('/buku', 'v_buku');

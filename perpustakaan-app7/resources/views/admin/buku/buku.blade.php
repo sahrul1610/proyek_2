@@ -49,6 +49,13 @@
                         <?php $no =1; ?>
                         @foreach ($buku as $data )
 
+                        <?php 
+                            $peminjaman = DB::table("peminjaman")
+                                    ->where("id_buku", $data->id_buku)
+                                    ->count();
+                                    
+                            $stok_terbaru = $data->stok - $peminjaman;
+                        ?>
                         <tr>
                             <td>{{ $no++ }}</td>
                             <td>{{ $data->kode_buku}}
@@ -58,7 +65,9 @@
                             <td>{{ $data->pengarang }}</td>
                             <td>{{ $data->tahun_terbit }}</td>
                             <td>{{ $data->penerbit }}</td>
-                            <td>{{ $data->stok }}</td>
+
+                            <td>{{ $stok_terbaru }}</td>
+
                             @if(auth()->user()->id_role == 1)
                             <td>
                                 <a href="/buku/detail/{{ $data->id_buku }}" class="btn btn-sm btn-success"><i class="fa fa-search"></i></a>
