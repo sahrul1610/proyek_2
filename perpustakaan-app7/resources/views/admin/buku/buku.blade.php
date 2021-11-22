@@ -30,7 +30,7 @@
                 </div> --}}
             </div>
             <!-- /.box-header -->
-            <div class="box-body table-responsive no-padding">
+            <div class="box-body table-responsive ">
                 <table id="example1" class="table table-hover">
                     <thead>
                         <tr>
@@ -49,11 +49,11 @@
                         <?php $no =1; ?>
                         @foreach ($buku as $data )
 
-                        <?php 
+                        <?php
                             $peminjaman = DB::table("peminjaman")
                                     ->where("id_buku", $data->id_buku)
                                     ->count();
-                                    
+
                             $stok_terbaru = $data->stok - $peminjaman;
                         ?>
                         <tr>

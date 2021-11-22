@@ -56,19 +56,19 @@
     @endif
 
 
-    <li class="header">Users</li>
+    <li class="header">Transaksi</li>
     <li class="treeview">
         <a href="#">
-            <i class="fa fa-bars"></i> <span>Users</span>
+            <i class="fa fa-bars"></i> <span>Sirkulasi</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
             </span>
         </a>
         <ul class="treeview-menu">
-            <li class="{{ request()->is('petugas')? 'active' : '' }}">
-                <a href="/petugas">
+            <li class="{{ request()->is('transaksi')? 'active' : '' }}">
+                <a href="/transaksi">
                     <i class="fa fa-user"></i>
-                    Petugas
+                    Transaksi
                 </a>
             </li>
             <li>

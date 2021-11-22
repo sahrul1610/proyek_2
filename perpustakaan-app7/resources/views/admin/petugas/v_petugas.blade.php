@@ -9,7 +9,7 @@
           <h3 class="box-title">data @yield('title')</h3>
         </div>
         <!-- /.box-header -->
-        <div class="box-body table-responsive no-padding">
+        <div class="box-body table-responsive ">
           <table id="example1" class="table table-bordered table-hover">
             <thead>
             <tr>

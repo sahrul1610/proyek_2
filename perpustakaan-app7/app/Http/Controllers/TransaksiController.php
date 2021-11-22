@@ -13,7 +13,12 @@ use App\Models\Peminjaman;
 class TransaksiController extends Controller
 {
     public function index(){
-        return view('/admin/transaksi/v_transaksi');
+        $data = [
+
+            "peminjaman" => peminjaman::orderBy("kode_peminjaman")->get(),
+
+        ];
+        return view('/admin/transaksi/v_transaksi', $data);
 
     }
 
@@ -34,9 +39,10 @@ class TransaksiController extends Controller
     		"id_buku" => $req->id_buku,
     		"id_anggota" => $req->id_anggota,
     		"tanggal_pinjam" => $req->tanggal_pinjam,
+    		"tanggal_kembali" => $req->tanggal_kembali,
     		"id_admin" => $req->id_admin
     	]);
 
-    	return redirect()->back();
+    	return redirect()->route('transaksi')->with('pesan','data berhasil di tambahkan');
     }
 }

@@ -56,7 +56,13 @@
             </div>
             <div class="col-md-4">
               <div class="form-group">
-                <label> ID ADMIN </label>
+                <label> Tanggal Kembali </label>
+                <input type="date" class="form-control" name="tanggal_kembali">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label> ID petugas </label>
                 <input type="text" class="form-control" name="id_admin" value="{{ auth()->user()->id }}">
               </div>
             </div>

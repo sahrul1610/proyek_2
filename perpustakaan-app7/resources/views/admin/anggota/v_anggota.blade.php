@@ -19,7 +19,7 @@
 
         </div>
         <!-- /.box-header -->
-        <div class="box-body table-responsive no-padding">
+        <div class="box-body table-responsive ">
           <table id="example1" class="table table-hover">
               <thead>
                 <tr>

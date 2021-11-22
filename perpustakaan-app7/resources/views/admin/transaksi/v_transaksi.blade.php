@@ -14,9 +14,9 @@
             <thead>
             <tr>
               <th>No</th>
-              <th>ID transaksi</th>
+              <th>Kode transaksi</th>
               <th>Buku</th>
-              <th>Peminjaman</th>
+              <th>Nama Peminjaman</th>
               <th>Tgl Pinjam</th>
               <th>Tgl kembali</th>
               <th>Denda</th>
@@ -24,7 +24,27 @@
             </tr>
             </thead>
             <tbody>
+                <?php $no =1; ?>
+            @foreach ( $peminjaman as $data )
 
+                <tr>
+                  <td>{{ $no++ }}</td>
+                  <td>{{ $data->kode_peminjaman }}
+                  </td>
+                  <td>{{ $data->getBuku->judul}}</td>
+                  <td>{{ $data->getAnggota->nama_anggota}}</td>
+                  <td>{{ $data->tanggal_pinjam}}</td>
+                  <td>{{ $data->tanggal_kembali}}</td>
+                  {{-- <td>{!! $data->tanggal_kembali - $data->tanggal_pinjam !!}</td> --}}
+                  {{-- <td>{{ $data->email }}</td>
+                  <td>{{ $data->password }}</td>
+                  <td>{{ $data->getRole->nama }}</td> --}}
+                  {{-- <td>1</td> --}}
+
+                </tr>
+
+
+            @endforeach
             </tbody>
           </table>
         </div>
