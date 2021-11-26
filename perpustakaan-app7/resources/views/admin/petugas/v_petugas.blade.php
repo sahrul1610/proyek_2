@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col-xs-12">
-        <p><a href="/petugas/add" class=" btn btn-primary btn-sm"style="width: 150px;">Tambah Petugas</a></p>
+        <p><a href="/petugas/add" class=" btn btn-primary btn-sm"style="width: 150px;"><i class="fa fa-plus"></i>Tambah Petugas</a></p>
       <div class="box">
         <div class="box-header">
           <h3 class="box-title">data @yield('title')</h3>
@@ -16,7 +16,7 @@
               <th>No</th>
               <th>Nama</th>
               <th>Email</th>
-              <th>Password</th>
+              {{-- <th>Password</th> --}}
               <th>Role</th>
               <th>Aksi</th>
             </tr>
@@ -30,7 +30,7 @@
                   <td>{{ $data->name }}
                   </td>
                   <td>{{ $data->email }}</td>
-                  <td>{{ $data->password }}</td>
+                  {{-- <td>{{ $data->password }}</td> --}}
                   <td>{{ $data->getRole->nama }}</td>
                   {{-- <td>1</td> --}}
                   <td>

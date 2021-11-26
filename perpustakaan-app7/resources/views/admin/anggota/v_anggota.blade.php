@@ -4,7 +4,7 @@
 @section('content')
 <div class="row">
     <div class="col-xs-12">
-        <p><a href="anggota/add" class=" btn btn-primary btn-sm"style="width: 150px;">Tambah @yield('title')</a></p>
+        <p><a href="anggota/add" class=" btn btn-primary btn-sm"style="width: 150px;"><i class="fa fa-plus"></i>Tambah @yield('title')</a></p>
         @if (session('pesan'))
         <div class="alert alert-success alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>

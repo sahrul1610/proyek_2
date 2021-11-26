@@ -34,6 +34,29 @@
             </li>
         </ul>
     </li>
+    <li class="header">Users</li>
+    <li class="treeview">
+        <a href="#">
+            <i class="fa fa-bars"></i> <span>Users</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li class="{{ request()->is('petugas')? 'active' : '' }}">
+                <a href="/petugas">
+                    <i class="fa fa-user"></i>
+                    Petugas
+                </a>
+            </li>
+            <li>
+                <a href="/role">
+                    <i class="fa fa-circle-o"></i>
+                    <span> Role </span>
+                </a>
+            </li>
+        </ul>
+    </li>
     @elseif(auth()->user()->id_role == 2)
     {{-- <li class="{{ request()->is('kategori')? 'active' : '' }}">
         <a href="/kategori">
@@ -51,10 +74,6 @@
     <li class="{{ request()->is('buku')? 'active' : '' }}">
         <a href="/buku"><i class="fa fa-book"></i> Buku</a>
     </li>
-    @else
-
-    @endif
-
 
     <li class="header">Transaksi</li>
     <li class="treeview">
@@ -79,4 +98,10 @@
             </li>
         </ul>
     </li>
+    @else
+
+    @endif
+
+
+
 </ul>

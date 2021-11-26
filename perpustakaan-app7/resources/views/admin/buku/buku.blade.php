@@ -6,7 +6,7 @@
 @section('content')
 <div class="row">
     <div class="col-xs-12">
-        <p><a href="/buku/add" class=" btn btn-primary btn-sm"style="width: 150px;">Tambah Buku</a></p>
+        <p><a href="/buku/add" class=" btn btn-primary btn-sm"style="width: 150px;"><i class="fa fa-plus"></i>Tambah Buku</a></p>
 
         @if (session('pesan'))
         <div class="alert alert-success alert-dismissible">

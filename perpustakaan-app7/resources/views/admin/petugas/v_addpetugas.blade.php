@@ -1,5 +1,5 @@
 @extends('Layout.v_template')
-@section('title', 'Tambah Anggota')
+@section('title', 'Tambah Petugas')
 @section('content')
 
 <div class="row">
@@ -39,7 +39,7 @@
             <div class="form-group">
                 <label for="exampleInputPassword1">Role</label>
                 <select class="form-control" name="id_role">
-                    <option></option>
+                    <option>-Pilih-</option>
                     @foreach($roles as $r)
                         <option value="{{ $r->id }}">
                             {{ $r->nama }}

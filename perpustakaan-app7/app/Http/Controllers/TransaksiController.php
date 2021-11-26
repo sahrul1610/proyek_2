@@ -9,13 +9,15 @@ use App\Models\BukuModel;
 use App\Models\User;
 use App\Models\AnggotaModel;
 use App\Models\Peminjaman;
+use App\Models\Denda;
 
 class TransaksiController extends Controller
 {
     public function index(){
         $data = [
 
-            "peminjaman" => peminjaman::orderBy("kode_peminjaman")->get(),
+            "denda" => Denda::orderBy("denda")->get(),
+            "peminjaman" => peminjaman::orderBy("kode_peminjaman")->get()
 
         ];
         return view('/admin/transaksi/v_transaksi', $data);
