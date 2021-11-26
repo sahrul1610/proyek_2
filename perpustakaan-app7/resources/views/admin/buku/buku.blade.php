@@ -15,6 +15,7 @@
             {{  session("pesan")  }}
         </div>
         @endif
+        
         <div class="box">
             <div class="box-header">
                 <h3 class="box-title">Data @yield('title')</h3>
@@ -49,13 +50,7 @@
                         <?php $no =1; ?>
                         @foreach ($buku as $data )
 
-                        <?php
-                            $peminjaman = DB::table("peminjaman")
-                                    ->where("id_buku", $data->id_buku)
-                                    ->count();
-
-                            $stok_terbaru = $data->stok - $peminjaman;
-                        ?>
+                       
                         <tr>
                             <td>{{ $no++ }}</td>
                             <td>{{ $data->kode_buku}}
@@ -66,7 +61,7 @@
                             <td>{{ $data->tahun_terbit }}</td>
                             <td>{{ $data->penerbit }}</td>
 
-                            <td>{{ $stok_terbaru }}</td>
+                            <td>{{ $data->stok }}</td>
 
                             @if(auth()->user()->id_role == 1)
                             <td>

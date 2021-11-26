@@ -85,6 +85,8 @@ Route::group(["middleware" => "admin"], function() {
 Route::get("/transaksi/form_peminjaman", [TransaksiController::class, "form_peminjaman"]);
 Route::post("/transaksi/simpan_peminjaman", [TransaksiController::class, "simpan_peminjaman"]);
 
+Route::get("/transaksi/form_pengembalian/", [TransaksiController::class, "form_pengembalian"]);
+
 Route::prefix("/role")->group(function() {
     Route::get("/", [RoleController::class, 'index'])->name('role');
     Route::get("/add", [RoleController::class, 'add']);

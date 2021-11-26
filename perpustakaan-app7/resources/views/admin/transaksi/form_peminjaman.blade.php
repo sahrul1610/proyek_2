@@ -23,10 +23,10 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label> Nama Buku </label>
-                <select class="form-control" name="id_buku">
+                <select class="form-control" name="kode_buku">
                   <option value="">- Pilih -</option>
                   @foreach($data_buku as $buku)
-                  <option value="{{ $buku->id_buku }}">
+                  <option value="{{ $buku->kode_buku }}">
                     {{ $buku->judul }}
                   </option>
                   @endforeach
@@ -63,7 +63,7 @@
             <div class="col-md-4">
               <div class="form-group">
                 <label> ID petugas </label>
-                <input type="text" class="form-control" name="id_admin" value="{{ auth()->user()->id }}">
+                <input type="text" class="form-control" name="id_petugas" value="{{ auth()->user()->id }}">
               </div>
             </div>
           </div>

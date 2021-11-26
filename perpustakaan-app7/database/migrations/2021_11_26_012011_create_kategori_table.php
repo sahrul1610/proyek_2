@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePengembaliansTable extends Migration
+class CreateKategoriTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreatePengembaliansTable extends Migration
      */
     public function up()
     {
-        Schema::create('pengembalians', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::create('kategori', function (Blueprint $table) {
+            $table->id('id_kategori');
+            $table->string('nama_kategori', 50);
         });
     }
 
@@ -26,6 +26,6 @@ class CreatePengembaliansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pengembalians');
+        Schema::dropIfExists('kategori');
     }
 }

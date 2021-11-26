@@ -9,40 +9,41 @@
           <h3 class="box-title">data @yield('title')</h3>
         </div>
         <!-- /.box-header -->
-        <div class="box-body table-responsive no-padding">
+        <div class="box-body table-responsive">
           <table id="example1" class="table table-bordered table-hover">
             <thead>
             <tr>
-              <th>No</th>
-              <th>Kode transaksi</th>
+              <th class="text-center">No</th>
+              <th class="text-center">Kode transaksi</th>
               <th>Buku</th>
               <th>Nama Peminjaman</th>
-              <th>Tgl Pinjam</th>
-              <th>Tgl kembali</th>
-              <th>Denda</th>
-              <th>Aksi</th>
+              <th class="text-center">Tgl Pinjam</th>
+              <th class="text-center">Tanggal Kembali</th>
+              <th class="text-center">Aksi</th>
             </tr>
             </thead>
             <tbody>
                 <?php $no =1; ?>
             @foreach ( $peminjaman as $data )
 
-                <tr>
-                  <td>{{ $no++ }}</td>
-                  <td>{{ $data->kode_peminjaman }}
-                  </td>
-                  <td>{{ $data->getBuku->judul}}</td>
-                  <td>{{ $data->getAnggota->nama_anggota}}</td>
-                  <td>{{ $data->tanggal_pinjam}}</td>
-                  <td>{{ $data->tanggal_kembali}}</td>
-                  <td>{{ $d->denda}}</td>
-                  {{-- <td>{!! $data->tanggal_kembali - $data->tanggal_pinjam !!}</td> --}}
-                  {{-- <td>{{ $data->email }}</td>
-                  <td>{{ $data->password }}</td>
-                  <td>{{ $data->getRole->nama }}</td> --}}
-                  {{-- <td>1</td> --}}
+            <tr>
+              <td class="text-center">{{ $no++ }}</td>
+              <td class="text-center">{{ $data->kode_peminjaman }}</td>
+              <td>{{ $data->getBuku->judul}}</td>
+              <td>{{ $data->getAnggota->nama_anggota}}</td>
+              <td class="text-center">{{ $data->tanggal_pinjam}}</td>
+              <td class="text-center">{{ $data->tanggal_kembali }}</td>
+              <td class="text-center">
+                <a href="" class="btn btn-primary btn-sm">
+                  Detail
+                </a>
+                <a href="" class="btn btn-info btn-sm">
+                  <i class="fa fa-search"></i> Pengembalian
+                </a>
+              </td>
+              
 
-                </tr>
+            </tr>
 
 
             @endforeach

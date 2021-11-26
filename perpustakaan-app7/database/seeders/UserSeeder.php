@@ -5,9 +5,9 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 
-use App\Models\Role;
+use App\Models\User;
 
-class RoleSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -19,8 +19,11 @@ class RoleSeeder extends Seeder
         $faker = Faker::create("id_ID");
         for ($i = 1; $i <= 10; $i++)
         {
-        	Role::create([
-        		"nama" => $faker->jobtitle
+        	User::create([
+        		"name" => $faker->lastName,
+        		"email" => $faker->email,
+        		"password" => bcrypt("login123"),
+        		"id_role" => mt_rand(1, 2)
         	]);
         }
     }

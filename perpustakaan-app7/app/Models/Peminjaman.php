@@ -21,7 +21,7 @@ class Peminjaman extends Model
         // SELECT * FROM buku JOIN kategori ON buku.id_kategori = kategori.id_kategori
 
         // return $this->belongsTo(ModelYangInginDiJoin, AtributJoinChild , AtributJoinParent)
-        return $this->belongsTo("App\Models\BukuModel", "id_buku", "id_buku");
+        return $this->belongsTo("App\Models\BukuModel", "kode_buku", "kode_buku");
     }
 
     public function getAnggota()
