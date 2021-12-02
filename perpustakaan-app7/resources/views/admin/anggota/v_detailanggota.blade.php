@@ -36,14 +36,10 @@
                     <input type="text" class="form-control" value="{{ $anggota->ttl_anggota }}" readonly>
 
                 </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Status Anggota</label>
-                    <input type="text" class="form-control"  value="{{ $anggota->status_anggota }}" readonly>
 
-                </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">No Hp</label>
-                    <input type="text" class="form-control"  value="{{ $anggota->NoHp }}" readonly>
+                    <input type="text" class="form-control"  value="{{ $anggota->no_hp }}" readonly>
 
                 </div>
             </div>

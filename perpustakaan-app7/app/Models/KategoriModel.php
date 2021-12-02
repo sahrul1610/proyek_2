@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-//use App\models\BukuModel;
+use App\models\BukuModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;

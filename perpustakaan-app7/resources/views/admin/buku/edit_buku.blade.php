@@ -67,7 +67,7 @@
               </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Tahun Terbit</label>
-                <input type="text" class="form-control" name="tahun_terbit" placeholder="Tahun Terbit" value="{{ $edit->tahun_terbit }}">
+                <input type="year" class="form-control" name="tahun_terbit" placeholder="Tahun Terbit" value="{{ $edit->tahun_terbit }}">
                 <div class="text-danger">
                   @error('tahun_terbit')
                   {{ $message }}

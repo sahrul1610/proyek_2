@@ -38,7 +38,7 @@ Route::get('/anggota', [AnggotaController::class, 'index'])->name('anggota');//-
 Route::get('/anggota/add', [AnggotaController::class, 'add']);//->middleware('admin');
 Route::post('/anggota/insert', [AnggotaController::class, 'insert']);//- >middleware('admin');
 Route::get('/anggota/edit/{id_anggota}', [AnggotaController::class, 'edit']);//->middleware('admin');
-Route::post('/anggota/update/{id_anggota}', [AnggotaController::class, 'update']);//->middleware('admin');
+Route::post('/anggota/update/', [AnggotaController::class, 'update']);//->middleware('admin');
 Route::get('/anggota/delete/{id_anggota}', [AnggotaController::class, 'delete']);//->middleware('admin');
 // Route::get('/anggota/detail/', function() {
 //     echo "hay";
@@ -85,7 +85,8 @@ Route::group(["middleware" => "admin"], function() {
 Route::get("/transaksi/form_peminjaman", [TransaksiController::class, "form_peminjaman"]);
 Route::post("/transaksi/simpan_peminjaman", [TransaksiController::class, "simpan_peminjaman"]);
 
-Route::get("/transaksi/form_pengembalian/", [TransaksiController::class, "form_pengembalian"]);
+Route::get("/transaksi/detail/{id_transaksi}", [TransaksiController::class, "detail"]);
+Route::post("/transaksi/update", [TransaksiController::class, "update"]);
 
 Route::prefix("/role")->group(function() {
     Route::get("/", [RoleController::class, 'index'])->name('role');

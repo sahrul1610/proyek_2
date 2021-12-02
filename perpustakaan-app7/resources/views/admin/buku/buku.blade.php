@@ -15,7 +15,7 @@
             {{  session("pesan")  }}
         </div>
         @endif
-        
+
         <div class="box">
             <div class="box-header">
                 <h3 class="box-title">Data @yield('title')</h3>
@@ -50,12 +50,12 @@
                         <?php $no =1; ?>
                         @foreach ($buku as $data )
 
-                       
+
                         <tr>
                             <td>{{ $no++ }}</td>
                             <td>{{ $data->kode_buku}}
                             </td>
-                            <td>{{ $data->getKategori->nama_kategori}}</td>
+                            <td>{{ $data->getKategori->nama_kategori }}</td>
                             <td>{{ $data->judul }}</td>
                             <td>{{ $data->pengarang }}</td>
                             <td>{{ $data->tahun_terbit }}</td>

@@ -17,7 +17,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label> Kode Peminjaman </label>
-                <input type="text" class="form-control" name="kode_peminjaman" placeholder="Masukkan Kode Peminjaman">
+                <input type="text" class="form-control" name="kode_transaksi" placeholder="Masukkan Kode Peminjaman">
               </div>
             </div>
             <div class="col-md-6">
@@ -60,6 +60,12 @@
                 <input type="date" class="form-control" name="tanggal_kembali">
               </div>
             </div>
+            {{-- <div class="col-md-4">
+              <div class="form-group">
+                <label> Tanggal pengembalian </label>
+                <input type="date" class="form-control" name="tanggal_pengembalian">
+              </div>
+            </div> --}}
             <div class="col-md-4">
               <div class="form-group">
                 <label> ID petugas </label>

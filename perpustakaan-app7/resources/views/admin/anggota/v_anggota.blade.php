@@ -28,8 +28,8 @@
                     <th>Nama</th>
                     <th>Alamat</th>
                     <th>Tempat, Tanggal LAhir</th>
-                    <th>Status</th>
-                    <th>NoHp</th>
+
+                    <th>No Hp</th>
                     <th>Aksi</th>
 
                   </tr>
@@ -46,7 +46,8 @@
                       <td>{{ $data->nama_anggota }}</td>
                       <td>{{ $data->alamat }}</td>
                       <td>{{ $data->ttl_anggota }}</td>
-                      <td>{{ $data->status_anggota}}</td>
+                      <td>{{ $data->no_hp }}</td>
+
                       <td>{{ $data->NoHp}}</td>
                       @if(auth()->user()->id_role == 1)
                       <td>

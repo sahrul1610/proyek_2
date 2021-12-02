@@ -19,29 +19,38 @@
               <th>Nama Peminjaman</th>
               <th class="text-center">Tgl Pinjam</th>
               <th class="text-center">Tanggal Kembali</th>
+              <th class="text-center">Denda</th>
               <th class="text-center">Aksi</th>
             </tr>
             </thead>
             <tbody>
                 <?php $no =1; ?>
-            @foreach ( $peminjaman as $data )
+            @foreach ( $transaksi as $data )
 
             <tr>
               <td class="text-center">{{ $no++ }}</td>
-              <td class="text-center">{{ $data->kode_peminjaman }}</td>
+              <td class="text-center">{{ $data->kode_transaksi}}</td>
               <td>{{ $data->getBuku->judul}}</td>
               <td>{{ $data->getAnggota->nama_anggota}}</td>
               <td class="text-center">{{ $data->tanggal_pinjam}}</td>
               <td class="text-center">{{ $data->tanggal_kembali }}</td>
+              <td class="text-center">Rp. {{ number_Format($data->denda) }}</td>
               <td class="text-center">
-                <a href="" class="btn btn-primary btn-sm">
-                  Detail
-                </a>
-                <a href="" class="btn btn-info btn-sm">
-                  <i class="fa fa-search"></i> Pengembalian
-                </a>
+
+                @if ($data->tanggal_mengembalikan != NULL)
+
+                @else
+                <a href="/transaksi/detail/{{ $data->id_transaksi }}" class="btn btn-primary btn-sm">
+                    Detail
+                  </a>
+                  <a href="" class="btn btn-info btn-sm">
+                    <i class="fa fa-search"></i> Pengembalian
+                  </a>
+                @endif
+
+
               </td>
-              
+
 
             </tr>
 

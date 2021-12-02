@@ -43,7 +43,7 @@ class AnggotaController extends Controller
             'nama_anggota.required' => 'wajib diisi!!',
             'alamat.required' => 'wajib diisi!!',
             'tll_anggota.required' => 'wajib diisi!!',
-            'status_anggota.required' => 'wajib diisi!!',
+
 
         ];
 
@@ -52,8 +52,8 @@ class AnggotaController extends Controller
             'nama_anggota' => 'required',
             'alamat' => 'required',
             'ttl_anggota' => 'required',
-            'status_anggota' => 'required',
-            'NoHp' => 'required',
+
+            'no_hp' => 'required',
         ], $message);
 
 
@@ -83,7 +83,7 @@ class AnggotaController extends Controller
             'nama_anggota.required' => 'wajib diisi!!',
             'alamat.required' => 'wajib diisi!!',
             'tll_anggota.required' => 'wajib diisi!!',
-            'status_anggota.required' => 'wajib diisi!!',
+
 
             ];
 
@@ -92,8 +92,7 @@ class AnggotaController extends Controller
                 'nama_anggota' => 'required',
                 'alamat' => 'required',
                 'ttl_anggota' => 'required',
-                'status_anggota' => 'required',
-                'NoHp' => 'required',
+                'no_hp' => 'required',
             ], $message);
 
             AnggotaModel::where("id_anggota", $request->id_anggota)->update([
@@ -101,8 +100,7 @@ class AnggotaController extends Controller
                 "nama_anggota" => $request->nama_anggota,
                 "alamat" => $request->alamat,
                 "ttl_anggota" => $request->ttl_anggota,
-                "status_anggota" => $request->status_anggota,
-                'NoHp'=> $request->NoHp,
+                'no_hp'=> $request->no_hp,
             ]);
 
         return redirect("/anggota");

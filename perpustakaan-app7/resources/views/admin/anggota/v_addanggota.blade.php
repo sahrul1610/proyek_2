@@ -53,18 +53,10 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Status</label>
-                        <input type="text" class="form-control" name="status_anggota" placeholder="Status" value="{{ old('status_anggota') }}">
-                        <div class="text-danger">
-                            @error('status_anggota')
-                            {{ $message }}
-                            @enderror
-                        </div>
-                    </div>
+
                     <div class="form-group">
                         <label for="exampleInputPassword1">No Telephone</label>
-                        <input type="text" class="form-control" name="NoHp" placeholder="No Telephone" value="{{ old('NoHp') }}">
+                        <input type="text" class="form-control" name="no_hp" placeholder="No Telephone" value="{{ old('no_hp') }}">
                         <div class="text-danger">
                             @error('status_anggota')
                             {{ $message }}

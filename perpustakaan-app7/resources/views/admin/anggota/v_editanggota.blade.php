@@ -15,8 +15,9 @@
 
         <!-- /.box-header -->
         <!-- form start -->
-        <form role="form" action="/anggota/update/{{ $edit->id_anggota }}" method="POST" enctype="multipart/form-data">
+        <form role="form" action="/anggota/update/" method="POST" enctype="multipart/form-data">
             @csrf
+            <input type="hidden" name="id_anggota" value="{{ $edit->id_anggota}}">
           <div class="box-body">
             <div class="form-group">
               <label for="exampleInputEmail1">nis</label>
@@ -54,20 +55,12 @@
                     @enderror
                 </div>
               </div>
+
             <div class="form-group">
-                <label for="exampleInputPassword1">status_anggota"</label>
-                <input type="text" class="form-control" name="status_anggota" placeholder="status_anggota" value="{{ $edit->status_anggota }}">
+                <label for="exampleInputPassword1">No Hp</label>
+                <input type="text" class="form-control" name="no_hp" placeholder="no_hp" value="{{ $edit->no_hp}}">
                 <div class="text-danger">
-                  @error('status_anggota')
-                  {{ $message }}
-                    @enderror
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">NoHp"</label>
-                <input type="text" class="form-control" name="NoHp" placeholder="NoHp" value="{{ $edit->NoHp}}">
-                <div class="text-danger">
-                  @error('NoHp')
+                  @error('no_hp')
                   {{ $message }}
                     @enderror
                 </div>
