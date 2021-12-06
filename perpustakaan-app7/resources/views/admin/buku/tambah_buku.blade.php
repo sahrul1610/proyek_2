@@ -15,10 +15,11 @@
             <!-- form start -->
             <form role="form" action="/buku/insert" method="POST" enctype="multipart/form-data">
                 @csrf
+
                 <div class="box-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Kode buku</label>
-                        <input type="text" class="form-control"   name="kode_buku" placeholder="kode buku" value="{{ old('kode_buku') }}">
+                        <input type="text" class="form-control"   name="kode_buku" placeholder="kode buku" value="{{ $kode }}" readonly>
                         <div class="text-danger">
                             @error('kode_buku')
                             {{ $message }}
@@ -40,13 +41,13 @@
                         <select class="form-control" name="id_kategori">
                             <option></option>
                             @foreach($kategori as $k)
-                                <option value="{{ $k->id_kategori }}">
-                                    {{ $k->nama_kategori }}
-                                </option>
+                            <option value="{{ $k->id_kategori }}">
+                                {{ $k->nama_kategori }}
+                            </option>
                             @endforeach
                         </select>
                         <div class="text-danger">
-                            @error('pengarang')
+                            @error('id_kategori')
                             {{ $message }}
                             @enderror
                         </div>
@@ -80,7 +81,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Penerbit</label>
+                        <label for="exampleInputPassword1">Stok</label>
                         <input type="text" class="form-control" name="stok" placeholder="Stok" value="{{ old('stok') }}">
                         <div class="text-danger">
                             @error('stok')

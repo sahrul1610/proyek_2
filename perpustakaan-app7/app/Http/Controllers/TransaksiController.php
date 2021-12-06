@@ -25,9 +25,24 @@ class TransaksiController extends Controller
 
     }
 
+    public function kode(){
+
+        $select =  Transaksi::max('kode_transaksi');
+        $kodeTransaksi = $select;
+
+        $noUrut = (int) substr($kodeTransaksi, 3,3);
+        $noUrut++;
+        $kode = "KP-";
+        $hasil = $kode . sprintf("%03s", $noUrut);
+
+        return $hasil;
+
+    }
+
     public function form_peminjaman()
     {
     	$data = [
+            "kode" => $this->kode(),
     		"data_buku" => BukuModel::get(),
     		"data_anggota" => AnggotaModel::get()
     	];
@@ -37,6 +52,26 @@ class TransaksiController extends Controller
 
     public function simpan_peminjaman(Request $req)
     {
+        $message = [
+            'kode_transaksi.required' => 'wajib diisi!!',
+
+            'kode_buku.required' => 'wajib diisi!!',
+            'id_anggota.required' => 'wajib diisi!!',
+            'tanggal_pinjam.required' => 'wajib diisi!!',
+            'tanggal_kembali.required' => 'wajib diisi!!',
+            'id_petugas.required' => 'wajib diisi!!',
+
+            ];
+
+            $this->validate($req, [
+                'kode_transaksi' => 'required',
+                'kode_buku' => 'required',
+                'id_anggota' => 'required',
+                'tanggal_pinjam' => 'required',
+                'tanggal_kembali' => 'required',
+                'id_petugas' => 'required',
+            ], $message);
+
     	Transaksi::create([
     		"kode_transaksi" => $req->kode_transaksi,
     		"kode_buku" => $req->kode_buku,
@@ -80,4 +115,39 @@ class TransaksiController extends Controller
         ]);
         return redirect("/transaksi");
     }
+
+    public function bayar_denda($id_transaksi)
+    {
+        $data = [
+            "detail" => Transaksi::where("id_transaksi", $id_transaksi)->first()
+        ];
+
+        return view("/admin/transaksi/bayar_denda", $data);
+    }
+
+    public function pengembalian(Request $request)
+    {
+        Transaksi::where("id_transaksi", $request->id_transaksi)->update([
+            "tanggal_mengembalikan" => date("Y-m-d")
+        ]);
+
+        return redirect()->back();
+    }
+
+    public function simpan_bayar_denda(Request $request)
+    {
+        Transaksi::where("id_transaksi", $request->id_transaksi)->update([
+            "denda" => $request->denda
+        ]);
+
+        return redirect("/transaksi");
+    }
+    public function hapus(Request $request)
+    {
+        Transaksi::where("id_transaksi", $request->id_transaksi)->delete();
+
+        return redirect()->route('transaksi')->with('pesan','data berhasil di hapus');
+    }
+
+
 }

@@ -1,13 +1,17 @@
 @extends("Layout.v_template")
 @section('title','Buku')
+
+@section('nav','Buku')
 @section("page_scripts")
 
 
 @section('content')
 <div class="row">
     <div class="col-xs-12">
+        @if(auth()->user()->id_role == 1)
         <p><a href="/buku/add" class=" btn btn-primary btn-sm"style="width: 150px;"><i class="fa fa-plus"></i>Tambah Buku</a></p>
-
+        @else
+        @endif
         @if (session('pesan'))
         <div class="alert alert-success alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -17,9 +21,15 @@
         @endif
 
         <div class="box">
-            <div class="box-header">
+            <div class="box-header with-border">
                 <h3 class="box-title">Data @yield('title')</h3>
 
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                    <i class="fa fa-minus"></i></button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+                    <i class="fa fa-times"></i></button>
+                </div>
                 {{-- <div class="box-tools">
                     <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
                         <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">

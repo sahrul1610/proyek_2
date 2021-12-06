@@ -3,10 +3,19 @@
 @section('content')
 <div class="row">
     <div class="col-xs-12">
+        @if(auth()->user()->id_role == 2)
         <p><a href="/transaksi/form_peminjaman" class=" btn btn-primary btn-sm"style="width: 150px;"><i class="fa fa-plus"></i> Tambah @yield('title')</a></p>
+        @elseif(auth()->user()->id_role == 1)
+        @endif
       <div class="box">
-        <div class="box-header">
+        <div class="box-header with-border">
           <h3 class="box-title">data @yield('title')</h3>
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+            <i class="fa fa-minus"></i></button>
+            <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+            <i class="fa fa-times"></i></button>
+        </div>
         </div>
         <!-- /.box-header -->
         <div class="box-body table-responsive">
@@ -14,13 +23,20 @@
             <thead>
             <tr>
               <th class="text-center">No</th>
-              <th class="text-center">Kode transaksi</th>
+              <th class="text-center">Kode Peminjaman</th>
               <th>Buku</th>
               <th>Nama Peminjaman</th>
               <th class="text-center">Tgl Pinjam</th>
               <th class="text-center">Tanggal Kembali</th>
+              <th class="text-center">Status</th>
+
               <th class="text-center">Denda</th>
+              @if(auth()->user()->id_role == 2)
               <th class="text-center">Aksi</th>
+              @elseif(auth()->user()->id_role == 1)
+              <th>Penanganan</th>
+              <th class="text-center">Aksi</th>
+              @endif
             </tr>
             </thead>
             <tbody>
@@ -34,23 +50,70 @@
               <td>{{ $data->getAnggota->nama_anggota}}</td>
               <td class="text-center">{{ $data->tanggal_pinjam}}</td>
               <td class="text-center">{{ $data->tanggal_kembali }}</td>
-              <td class="text-center">Rp. {{ number_Format($data->denda) }}</td>
               <td class="text-center">
-
                 @if ($data->tanggal_mengembalikan != NULL)
 
+                    @if($data->tanggal_mengembalikan > $data->tanggal_kembali)
+                        @if($data->denda == NULL)
+                        <span class="badge bg-red">denda</span>
+                        @elseif($data->denda != NULL)
+                        <span class="badge bg-green">selesai</span>
+                        @endif
+                    @else
+                    <span class="badge bg-green">selesai</span>
+                    @endif
+
                 @else
-                <a href="/transaksi/detail/{{ $data->id_transaksi }}" class="btn btn-primary btn-sm">
-                    Detail
-                  </a>
-                  <a href="" class="btn btn-info btn-sm">
-                    <i class="fa fa-search"></i> Pengembalian
-                  </a>
+                <span class="badge bg-light-blue">proses</span>
+
                 @endif
 
 
               </td>
+              <td class="text-center">Rp. {{ number_Format($data->denda) }}</td>
+              @if(auth()->user()->id_role == 2)
+              <td class="text-center">
 
+                @if ($data->tanggal_mengembalikan != NULL)
+
+                    @if($data->tanggal_mengembalikan  > $data->tanggal_kembali)
+                        @if($data->denda == NULL)
+                        <a href="{{ url('/transaksi/bayar_denda') }}/{{ $data->id_transaksi }}" class="btn btn-danger btn-sm">
+                            Bayar Denda
+                        </a>
+                        @elseif($data->denda != NULL)
+
+                        @endif
+                    @else
+
+                    @endif
+                @else
+                <a href="/transaksi/detail/{{ $data->id_transaksi }}" class="btn btn-primary btn-sm">
+                    Detail
+                  </a>
+                  <form action="{{ url('/transaksi/pengembalian') }}" method="POST" style="display: inline;">
+                    <input type="hidden" name="id_transaksi" value="{{ $data->id_transaksi }}">
+                    @csrf
+                    <button type="submit" class="btn btn-info btn-sm">
+                        <i class="fa fa-plus"></i> Kembalikan
+                      </button>
+                  </form>
+
+                @endif
+
+              </td>
+              @elseif(auth()->user()->id_role == 1)
+
+              <td>
+
+                {{ $data->getUser->name}}
+              </td>
+                <td>
+                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete{{ $data->id_transaksi }}">
+                    <i class="fa fa-trash"></i>
+                    </button>
+                </td>
+              @endif
 
             </tr>
 
@@ -86,4 +149,29 @@
         <!-- /.modal-dialog -->
       </div>
       @endforeach --}}
+
+@foreach ( $transaksi as $data)
+
+
+<div class="modal modal-danger fade" id="delete{{ $data->id_transaksi }}">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">{{ $data->kode_transaksi }}</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Apakah Anda yakin ingin menghapus Data ini!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">No</button>
+                    <a href="transaksi/hapus/{{ $data->id_transaksi }}" class="btn btn-outline">Yes</a>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    @endforeach
 @endsection

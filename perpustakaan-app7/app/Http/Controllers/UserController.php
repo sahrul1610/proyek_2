@@ -44,7 +44,7 @@ class UserController extends Controller
             'name.required' => 'wajib diisi!!',
             'name.min' => 'Min 4 Karakter',
             'email.required' => 'wajib diisi!!',
-            'email.email' => 'masukan email yang benar',
+            //'email.email' => 'masukan email yang benar',
             'email.unique' => 'email ini sudah ada!!!',
             'password.required' => 'wajib diisi!!',
             'password.min' => 'Min 5 Karakter',

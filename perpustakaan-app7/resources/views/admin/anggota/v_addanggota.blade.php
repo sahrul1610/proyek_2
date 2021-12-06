@@ -18,8 +18,8 @@
                 @csrf
                 <div class="box-body">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">NIS</label>
-                        <input type="text" class="form-control"   name="nis" placeholder="Nis" value="{{ old('Nis') }}">
+                        <label for="exampleInputEmail1">ID Anggota</label>
+                        <input type="text" class="form-control"   name="nis" placeholder="ID Anggota" value="{{ $kode }}" readonly>
                         <div class="text-danger">
                             @error('nis')
                             {{ $message }}
@@ -45,8 +45,8 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Tempat, Tanggal Lahir</label>
-                        <input type="text" class="form-control" name="ttl_anggota" placeholder="Tempat Tanggal Lahir " value="{{ old('ttl_anggota') }}">
+                        <label for="exampleInputPassword1">Tempat Lahir</label>
+                        <input type="text" class="form-control" name="ttl_anggota" placeholder="Tempat Lahir " value="{{ old('ttl_anggota') }}">
                         <div class="text-danger">
                             @error('ttl_anggota')
                             {{ $message }}
@@ -58,7 +58,7 @@
                         <label for="exampleInputPassword1">No Telephone</label>
                         <input type="text" class="form-control" name="no_hp" placeholder="No Telephone" value="{{ old('no_hp') }}">
                         <div class="text-danger">
-                            @error('status_anggota')
+                            @error('no_hp')
                             {{ $message }}
                             @enderror
                         </div>

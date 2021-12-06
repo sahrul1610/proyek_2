@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\BukuModel;
 use App\Models\User;
 use App\Models\AnggotaModel;
+use App\Models\Transaksi;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -14,7 +15,8 @@ class HomeController extends Controller
         $data = [
             "jumlah_data_buku" => BukuModel::count(),
             "jumlah_data_user" => User::count(),
-            "jumlah_data_anggota" => AnggotaModel::count()
+            "jumlah_data_anggota" => AnggotaModel::count(),
+            "jumlah_data_transaksi" => Transaksi::count()
         ];
 
         return view('v_home', $data);

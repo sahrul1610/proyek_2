@@ -17,7 +17,12 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label> Kode Peminjaman </label>
-                <input type="text" class="form-control" name="kode_transaksi" placeholder="Masukkan Kode Peminjaman">
+                <input type="text" class="form-control" name="kode_transaksi" placeholder="Masukkan Kode Peminjaman" value="{{ $kode }}" readonly>
+                <div class="text-danger">
+                    @error('kode_transaksi')
+                    {{ $message }}
+                    @enderror
+                </div>
               </div>
             </div>
             <div class="col-md-6">
@@ -27,10 +32,15 @@
                   <option value="">- Pilih -</option>
                   @foreach($data_buku as $buku)
                   <option value="{{ $buku->kode_buku }}">
-                    {{ $buku->judul }}
+                    {{ $buku->judul }}  ({{ $buku->kode_buku}})
                   </option>
                   @endforeach
                 </select>
+                <div class="text-danger">
+                    @error('kode_buku')
+                    {{ $message }}
+                    @enderror
+                </div>
               </div>
             </div>
           </div>
@@ -38,26 +48,41 @@
             <div class="col-md-4">
               <div class="form-group">
                 <label> Nama Anggota </label>
-                <select class="form-control" name="id_anggota">
+                <select class="form-control select2" name="id_anggota">
                   <option value="">- Pilih -</option>
                   @foreach($data_anggota as $anggota)
                     <option value="{{ $anggota->id_anggota }}">
-                      {{ $anggota->nama_anggota }}
+                      {{ $anggota->nama_anggota }} ({{ $anggota->nis}})
                     </option>
                   @endforeach
                 </select>
+                <div class="text-danger">
+                    @error('id_anggota')
+                    {{ $message }}
+                    @enderror
+                </div>
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group">
                 <label> Tanggal Pinjam </label>
                 <input type="date" class="form-control" name="tanggal_pinjam">
+                <div class="text-danger">
+                    @error('tanggal_pinjam')
+                    {{ $message }}
+                    @enderror
+                </div>
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group">
                 <label> Tanggal Kembali </label>
                 <input type="date" class="form-control" name="tanggal_kembali">
+                <div class="text-danger">
+                    @error('tanggal_kembali')
+                    {{ $message }}
+                    @enderror
+                </div>
               </div>
             </div>
             {{-- <div class="col-md-4">
@@ -70,6 +95,11 @@
               <div class="form-group">
                 <label> ID petugas </label>
                 <input type="text" class="form-control" name="id_petugas" value="{{ auth()->user()->id }}">
+                <div class="text-danger">
+                    @error('id_petugas')
+                    {{ $message }}
+                    @enderror
+                </div>
               </div>
             </div>
           </div>

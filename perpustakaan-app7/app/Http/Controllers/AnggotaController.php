@@ -28,9 +28,25 @@ class AnggotaController extends Controller
 
         return view("/admin/anggota/v_detailanggota", $data);
     }
+    public function kodeAnggota(){
+
+        $select =  AnggotaModel::max('nis');
+        $nis = $select;
+
+        $noUrut = (int) substr($nis, 3,3);
+        $noUrut++;
+        $kode = "10";
+        $hasil = $kode .sprintf("%03s", $noUrut);
+
+        return $hasil;
+
+    }
 
     public function add(){
-        return view('/admin/anggota/v_addanggota');
+        $data = [
+            "kode" => $this->kodeAnggota(),
+        ];
+        return view('/admin/anggota/v_addanggota',$data);
     }
 
     public function insert(Request $request){
@@ -42,7 +58,8 @@ class AnggotaController extends Controller
             'nis.max' => 'Max 7 Karakter',
             'nama_anggota.required' => 'wajib diisi!!',
             'alamat.required' => 'wajib diisi!!',
-            'tll_anggota.required' => 'wajib diisi!!',
+            'ttl_anggota.required' => 'wajib diisi!!',
+            'no_hp.required' => 'wajib diisi!!',
 
 
         ];

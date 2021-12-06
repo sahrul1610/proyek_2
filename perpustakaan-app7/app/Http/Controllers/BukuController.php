@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Models\BukuModel;
 use App\Models\KategoriModel;
 use Facade\FlareClient\View;
@@ -20,6 +21,20 @@ class BukuController extends Controller
         ];
 
         return view('/admin/buku/buku', $data);
+    }
+
+    public function kode_buku(){
+
+        $select =  BukuModel::max('kode_buku');
+        $kodeBuku = $select;
+
+        $noUrut = (int) substr($kodeBuku, 3,3);
+        $noUrut++;
+        $kode = "BK-";
+        $hasil = $kode . sprintf("%03s", $noUrut);
+
+        return $hasil;
+
     }
 
     public function insert(Request $request){
@@ -60,6 +75,7 @@ class BukuController extends Controller
 
     public function add(){
         $data = [
+            "kode" => $this->Kode_buku(),
             "kategori" => KategoriModel::orderBy("nama_kategori", "DESC")->get()
         ];
         return view('/admin/buku/tambah_buku', $data);

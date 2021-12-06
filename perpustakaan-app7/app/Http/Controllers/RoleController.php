@@ -48,10 +48,10 @@ class RoleController extends Controller
         return redirect()->with('sukses','data berhasil di tambahkan');
     }
 
-    public function edit($id){
+    public function edit($id_role){
         $data = [
-            "edit" => Role::where("id", $id)->first(),
-            "roles" => Role::where("id", "!=" , $id)->get()
+            "edit" => Role::where("id_role", $id_role)->first(),
+            "roles" => Role::where("id_role", "!=" , $id_role)->get()
         ];
 
         return view("/admin/role/editrole", $data);
@@ -59,7 +59,7 @@ class RoleController extends Controller
 
     public function update(Request $request)
     {
-        Role::where("id", $request->id)->update([
+        Role::where("id_role", $request->id_role)->update([
             "nama" => $request->nama,
         ]);
 
@@ -68,7 +68,7 @@ class RoleController extends Controller
 
     public function hapus(Request $request)
     {
-        ROle::where("id", $request->id)->delete();
+        ROle::where("id_role", $request->id_role)->delete();
 
         return redirect("/role");
     }

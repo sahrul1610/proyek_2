@@ -29,8 +29,8 @@
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
-
-    <!-- Google Font -->
+    {{-- <link rel="stylesheet" href="/template/bower_components/select2/dist/css/select2.min.css">
+    <!-- Google Font --> --}}
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition fixed skin-blue sidebar-mini">
@@ -74,23 +74,15 @@
                                 <!-- Menu Body -->
                                 <li class="user-body">
                                     <div class="row">
-                                        <div class="col-xs-4 text-center">
-                                            <a href="#">Followers</a>
-                                        </div>
-                                        <div class="col-xs-4 text-center">
-                                            <a href="#">Sales</a>
-                                        </div>
-                                        <div class="col-xs-4 text-center">
-                                            <a href="#">Friends</a>
-                                        </div>
+
+
+
                                     </div>
                                     <!-- /.row -->
                                 </li>
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
-                                    <div class="pull-left">
-                                        <a href="#" class="btn btn-default btn-flat">Profile</a>
-                                    </div>
+
                                     <div class="pull-right">
                                         <a href="/logout" class="btn btn-default btn-flat">Sign out</a>
                                     </div>
@@ -145,6 +137,7 @@
                 </h1>
 
             </section>
+
             <!-- Main content -->
             <section class="content">
                 @yield("content")
@@ -207,6 +200,7 @@
     <script src="/template/dist/js/demo.js"></script>
     <script>
         $(function () {
+
             $('#example1').DataTable()
             $('#example2').DataTable({
                 'paging'      : true,

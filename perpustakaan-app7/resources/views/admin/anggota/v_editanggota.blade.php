@@ -20,7 +20,7 @@
             <input type="hidden" name="id_anggota" value="{{ $edit->id_anggota}}">
           <div class="box-body">
             <div class="form-group">
-              <label for="exampleInputEmail1">nis</label>
+              <label for="exampleInputEmail1">ID Anggota</label>
               <input type="text" class="form-control"   name="nis" placeholder="nis" value="{{ $edit->nis }}" readonly >
               <div class="text-danger">
                 @error('nis')

@@ -8,8 +8,14 @@
         <p><a href="/role/add" class="btn btn-sm btn-primary">Tambah @yield('title')</a></p>
         {{-- <p><a href="/role/add" class=" btn btn-primary btn-sm"style="width: 150px;">Tambah Petugas</a></p> --}}
       <div class="box">
-        <div class="box-header">
+        <div class="box-header with-border">
           <h3 class="box-title">data @yield('title')</h3>
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+            <i class="fa fa-minus"></i></button>
+            <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+            <i class="fa fa-times"></i></button>
+        </div>
         </div>
         <!-- /.box-header -->
         <div class="box-body table-responsive">
@@ -34,9 +40,9 @@
                   </td>
 
                   <td>
-                      <a href="/role/edit/{{ $data->id }}" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
+                      <a href="/role/edit/{{ $data->id_role }}" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
 
-                      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $data->id }}">
+                      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $data->id_role }}">
                         <i class="fa fa-trash"></i>
                       </button>
                 </td>
@@ -54,7 +60,7 @@
       @foreach ( $roles as $data)
 
 
-      <div class="modal modal-danger fade" id="delete{{ $data->id }}">
+      <div class="modal modal-danger fade" id="delete{{ $data->id_role }}">
         <div class="modal-dialog modal-sm">
           <div class="modal-content">
             <div class="modal-header">
@@ -67,7 +73,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">No</button>
-              <a href="role/hapus/{{ $data->id }}" class="btn btn-outline">Yes</a>
+              <a href="role/hapus/{{ $data->id_role }}" class="btn btn-outline">Yes</a>
             </div>
           </div>
           <!-- /.modal-content -->

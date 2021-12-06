@@ -42,7 +42,7 @@
                 <select class="form-control" name="id_role">
                     <option value="">- Pilih -</option>
                     @foreach($data_role as $role)
-                        @if($role->id == $edit->id_role)
+                        @if($role->id_role == $edit->id_role)
                         <option value="{{ $role->id_role }}" selected>
                             {{ $role->nama }}
                         </option>

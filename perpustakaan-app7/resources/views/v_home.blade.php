@@ -48,7 +48,7 @@
       <!-- small box -->
       <div class="small-box bg-green">
         <div class="inner">
-          <h3>{{ $jumlah_data_user }}<sup style="font-size: 20px">%</sup></h3>
+          <h3>{{ $jumlah_data_user }}<sup style="font-size: 20px"></sup></h3>
 
           <p>Petugas</p>
         </div>
@@ -78,14 +78,14 @@
       <!-- small box -->
       <div class="small-box bg-red">
         <div class="inner">
-          <h3>65</h3>
+          <h3>{{ $jumlah_data_transaksi }}</h3>
 
-          <p>Unique Visitors</p>
+          <p>Transaksi</p>
         </div>
         <div class="icon">
           <i class="ion ion-pie-graph"></i>
         </div>
-        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        <a href="/transaksi" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div>
     <!-- ./col -->
