@@ -18,7 +18,8 @@ class TransaksiController extends Controller
         $data = [
 
             "denda" => DendaModel::orderBy("denda", "DESC")->get(),
-            "transaksi" => Transaksi::orderBy("kode_transaksi")->get()
+            //"transaksi" => Transaksi::orderBy("tanggal_pinjam", "DESC")->get()
+            "transaksi" => Transaksi::orderBy("id_transaksi", "DESC")->get()
 
         ];
         return view('/admin/transaksi/v_transaksi', $data);
@@ -149,5 +150,21 @@ class TransaksiController extends Controller
         return redirect()->route('transaksi')->with('pesan','data berhasil di hapus');
     }
 
+    // public function cetakForm(){
+    //     return view('/admin/transaksi/cetak-laporan');
+    // }
+
+    // public function cetakDataPertanggal($tglawal, $tglahir) {
+    //     dd(["tanggal Awal: ".$tglawal, "tanggal Akhir : ".$tglahir ]);
+    // }
+
+    public function rekap ( request $request ){
+        $rekap = Transaksi::whereBetween('tanggal_pinjam', [$request->tglm, $request->tgls])->count();
+        $denda = Transaksi::sum('denda');
+        return response()->json([
+            'jumlah' => $rekap,
+            'denda'  => $denda
+        ]);
+    }
 
 }

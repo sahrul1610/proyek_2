@@ -1,5 +1,16 @@
 @extends("Layout.v_template")
 @section('title','Detail anggota')
+@section('content-header')
+<h1>
+    @yield('title')
+    <small>@yield('title')</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+
+    <li class="active">@yield('title')</li>
+  </ol>
+@endsection
 
 @section('content')
 <p><a href="/anggota" class="btn btn-success tbn-sm">Kembali</a></p>

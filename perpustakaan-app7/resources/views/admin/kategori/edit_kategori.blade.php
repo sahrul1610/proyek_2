@@ -1,6 +1,17 @@
 
 @extends("Layout.v_template")
 @section('title','edit kategori')
+@section('content-header')
+<h1>
+    @yield('title')
+    <small>@yield('title')</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a href="#">Buku</a></li>
+    <li class="active">@yield('title')</li>
+  </ol>
+@endsection
 @section('content')
 <div class="row">
     <div class="col-md-6">

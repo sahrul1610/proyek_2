@@ -12,6 +12,8 @@ use App\Http\Controllers\TransaksiController;
 
 use Illuminate\Support\Facades\Route;
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,7 +27,9 @@ use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
 //     return view('v_home');
-// });
+
+
+
 
 Route::get('/', [HomeController::class, 'index']);
 
@@ -91,6 +95,10 @@ Route::get("/transaksi/bayar_denda/{id_transaksi}", [TransaksiController::class,
 Route::post("/transaksi/bayar_denda/simpan", [TransaksiController::class, "simpan_bayar_denda"])->middleware('admin');
 Route::post("/transaksi/pengembalian", [TransaksiController::class, "pengembalian"])->middleware('admin');
 Route::get("/transaksi/hapus/{id_transaksi}", [TransaksiController::class, "hapus"])->middleware('admin');
+Route::get("/transaksi/hapus/{id_transaksi}", [TransaksiController::class, "hapus"])->middleware('admin');
+Route::get("/cetak-laporan", [TransaksiController::class, "cetakForm"])->name('cetak-laporan')->middleware('admin');
+Route::post("/cetak-data-pertanggal/{tglawal}/{tglahir}", [TransaksiController::class, "cetakDataPertanggal"]);
+Route::post("/transaksi/rekap", [TransaksiController::class, "rekap"]);
 
 Route::prefix("/role")->group(function() {
     Route::get("/", [RoleController::class, 'index'])->name('role')->middleware('admin');

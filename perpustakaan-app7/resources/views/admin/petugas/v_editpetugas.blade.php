@@ -1,6 +1,16 @@
 @extends('Layout.v_template')
 @section('title','Edit Petugas')
-
+@section('content-header')
+<h1>
+    @yield('title')
+    <small>@yield('title')</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a href="#">Users</a></li>
+    <li class="active">@yield('title')</li>
+  </ol>
+@endsection
 @section('content')
 <p><a href="/petugas" class="btn btn-success tbn-sm">Kembali</a></p>
 <div class="row">
@@ -39,7 +49,7 @@
 
             <div classs="form-group">
                 <label for="id_role"> Role </label>
-                <select class="form-control" name="id_role">
+                <select class="form-control select2" name="id_role">
                     <option value="">- Pilih -</option>
                     @foreach($data_role as $role)
                         @if($role->id_role == $edit->id_role)

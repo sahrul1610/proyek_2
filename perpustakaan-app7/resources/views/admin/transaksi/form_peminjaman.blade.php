@@ -28,12 +28,24 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label> Nama Buku </label>
-                <select class="form-control" name="kode_buku">
+                <select class="form-control select2" name="kode_buku">
                   <option value="">- Pilih -</option>
                   @foreach($data_buku as $buku)
-                  <option value="{{ $buku->kode_buku }}">
+                  <?php
+                    $transaksi = DB::table("transaksi")
+                            ->where('tanggal_mengembalikan',null)
+                            ->where("kode_buku", $buku->kode_buku)
+                            ->count();
+
+                    $stok_terbaru = $buku->stok - $transaksi;
+                    ?>
+
+                @if ($stok_terbaru > 0)
+                <option value="{{ $buku->kode_buku }}">
                     {{ $buku->judul }}  ({{ $buku->kode_buku}})
                   </option>
+                @endif
+
                   @endforeach
                 </select>
                 <div class="text-danger">
@@ -48,7 +60,7 @@
             <div class="col-md-4">
               <div class="form-group">
                 <label> Nama Anggota </label>
-                <select class="form-control select2" name="id_anggota">
+                <select class="form-control select2" name="id_anggota" width="100%">
                   <option value="">- Pilih -</option>
                   @foreach($data_anggota as $anggota)
                     <option value="{{ $anggota->id_anggota }}">

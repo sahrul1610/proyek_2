@@ -1,5 +1,16 @@
 @extends('Layout.v_template')
 @section('title', 'Tambah Petugas')
+@section('content-header')
+<h1>
+    @yield('title')
+    <small>@yield('title')</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a href="#">Users</a></li>
+    <li class="active">@yield('title')</li>
+  </ol>
+@endsection
 @section('content')
 
 <div class="row">
@@ -38,7 +49,7 @@
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Role</label>
-                <select class="form-control" name="id_role">
+                <select class="form-control select2" name="id_role">
                     <option>-Pilih-</option>
                     @foreach($roles as $r)
                         <option value="{{ $r->id_role }}">

@@ -1,6 +1,16 @@
 @extends('Layout.v_template')
 @section('title','Edit Buku')
-
+@section('content-header')
+<h1>
+    @yield('title')
+    <small>@yield('title')</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a href="#">Buku</a></li>
+    <li class="active">Edit</li>
+  </ol>
+@endsection
 @section('content')
 <p><a href="/buku" class="btn btn-success tbn-sm">Kembali</a></p>
 <div class="row">
@@ -39,7 +49,7 @@
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Kategori</label>
-                <select class="form-control" name="id_kategori">
+                <select class="form-control select2" name="id_kategori">
                     <option value="">- Pilih -</option>
                     @foreach($kategori as $k)
                         @if($k->id_kategori == $edit->id_kategori))

@@ -1,5 +1,16 @@
 @extends('Layout.v_template')
 @section('title', 'Tambah Buku')
+@section('content-header')
+<h1>
+    @yield('title')
+    <small>@yield('title')</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a href="#">Buku</a></li>
+    <li class="active">@yield('title')</li>
+  </ol>
+@endsection
 @section('content')
 <div class="row">
     <!-- left column -->
@@ -19,7 +30,7 @@
                 <div class="box-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Kode buku</label>
-                        <input type="text" class="form-control"   name="kode_buku" placeholder="kode buku" value="{{ $kode }}" readonly>
+                        <input type="text" class="form-control"   name="kode_buku" placeholder="kode buku" value="{{ old('kode_buku') }}">
                         <div class="text-danger">
                             @error('kode_buku')
                             {{ $message }}
@@ -38,7 +49,7 @@
 
                     <div class="form-group">
                         <label for="exampleInputPassword1">Kategori</label>
-                        <select class="form-control" name="id_kategori">
+                        <select class="form-control select2" name="id_kategori">
                             <option></option>
                             @foreach($kategori as $k)
                             <option value="{{ $k->id_kategori }}">

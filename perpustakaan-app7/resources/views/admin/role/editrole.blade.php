@@ -1,13 +1,23 @@
 @extends("Layout.v_template")
-@section('title','Role')
-
+@section('title','Edit Role')
+@section('content-header')
+<h1>
+    @yield('title')
+    <small>@yield('title')</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a href="#">Users</a></li>
+    <li class="active">@yield('title')</li>
+  </ol>
+@endsection
 @section('content')
 <div class="row">
     <div class="col-md-6">
         <!-- general form elements -->
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Data @yield('title')</h3>
+                <h3 class="box-title">Edit @yield('title')</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->

@@ -1,5 +1,31 @@
 @extends('Layout.v_template')
 @section('title','Transaksi')
+@if(auth()->user()->id_role == 2)
+@section('content-header')
+<h1>
+    @yield('title')
+    <small>@yield('title')</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+
+    <li class="active">Sirkulasi</li>
+    <li class="active">@yield('title')</li>
+  </ol>
+@endsection
+@elseif(auth()->user()->id_role == 1)
+@section('content-header')
+<h1>
+    Laporan
+    <small>Laporan</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+
+    <li class="active">Laporan</li>
+  </ol>
+@endsection
+@endif
 @section('content')
 <div class="row">
     <div class="col-xs-12">
@@ -8,8 +34,11 @@
         @elseif(auth()->user()->id_role == 1)
         @endif
       <div class="box">
+
         <div class="box-header with-border">
-          <h3 class="box-title">data @yield('title')</h3>
+            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#cek">
+                rekap
+                </button>
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
             <i class="fa fa-minus"></i></button>
@@ -150,28 +179,125 @@
       </div>
       @endforeach --}}
 
-@foreach ( $transaksi as $data)
 
 
-<div class="modal modal-danger fade" id="delete{{ $data->id_transaksi }}">
-    <div class="modal-dialog modal-sm">
+
+    @foreach ( $transaksi as $data)
+
+
+    <div class="modal modal-danger fade" id="delete{{ $data->id_transaksi }}">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">{{ $data->kode_transaksi }}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Apakah Anda yakin ingin menghapus Data ini!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">No</button>
+                        <a href="transaksi/hapus/{{ $data->id_transaksi }}" class="btn btn-outline">Yes</a>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+
+        @endforeach
+
+
+<div class="modal modal-primary fade" id="cek">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">{{ $data->kode_transaksi }}</h4>
+                    <h4 class="modal-title">Rekap Data</h4>
                 </div>
                 <div class="modal-body">
-                    <p>Apakah Anda yakin ingin menghapus Data ini!</p>
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <label> Tanggal mulai</label>
+                                        <input type="date" class="form-control" name="tglm">
+                                    </div>
+                                    <div class="col-lg-4">
+                                        @csrf
+                                        <label> Tanggal Selesai </label>
+                                        <input type="date" class="form-control" name="tgls">
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <div class="form-group">
+                                            <input type="button" id="cek1" value="Cek" class="btn btn-primary">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <table class="table table-bordered" id="dataTable">
+                                <thead>
+                                    <tr>
+                                        <th>Tgl Mulai</th>
+                                        <th>Tgl Selesai</th>
+                                        <th>Jumlah</th>
+                                        <th>Denda</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody></tbody>
+                            </table>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">No</button>
-                    <a href="transaksi/hapus/{{ $data->id_transaksi }}" class="btn btn-outline">Yes</a>
+                    <a href="" class="btn btn-outline">Yes</a>
                 </div>
             </div>
             <!-- /.modal-content -->
         </div>
         <!-- /.modal-dialog -->
     </div>
-    @endforeach
+
 @endsection
+@section('page_scripts')
+<script>
+    $(function() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('input[name="_token"]').attr('value')
+            }
+        });
+        $("#cek1").on('click', function() {
+            let tglm = $("input[name='tglm']").val().trim();
+            let tgls = $("input[name='tgls']").val().trim();
+
+            let empTable = document.getElementById("dataTable").getElementsByTagName("tbody")[0];
+            empTable.innerHTML = "";
+
+            $.ajax({
+                url: '/transaksi/rekap',
+                type: 'post',
+                data: {
+                    tglm: tglm,
+                    tgls: tgls
+                },
+                success: function(response) {
+                    let NewRow = empTable.insertRow(0);
+                    let tglmCell = NewRow.insertCell(0);
+                    let tglsCell = NewRow.insertCell(1);
+                    let jumlahCell = NewRow.insertCell(2);
+                    let dendaCell = NewRow.insertCell(3);
+
+                    tglmCell.innerHTML = tglm;
+                    tglsCell.innerHTML = tgls;
+                    jumlahCell.innerHTML = response.jumlah;
+                    dendaCell.innerHTML = response.denda;
+                }
+            })
+        })
+    })
+</script>
+@endsection
+

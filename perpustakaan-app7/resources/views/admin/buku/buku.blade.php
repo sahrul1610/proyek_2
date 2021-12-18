@@ -3,8 +3,31 @@
 
 @section('nav','Buku')
 @section("page_scripts")
+@if(auth()->user()->id_role == 1)
+@section('content-header')
+<h1>
+    @yield('title')
+    <small>Data Buku</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a href="#">Buku</a></li>
+    <li class="active">Buku</li>
+  </ol>
+@endsection
+@elseif(auth()->user()->id_role == 2)
+@section('content-header')
+<h1>
+    @yield('title')
+    <small>Data Buku</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
 
-
+    <li class="active">Buku</li>
+  </ol>
+@endsection
+@endif
 @section('content')
 <div class="row">
     <div class="col-xs-12">
@@ -53,13 +76,21 @@
                             <th>Tahun Terbit</th>
                             <th>Penerbit</th>
                             <th>Stok</th>
+                            <th>Stok Terbaru</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php $no =1; ?>
                         @foreach ($buku as $data )
+                        <?php
+                            $transaksi = DB::table("transaksi")
+                                    ->where('tanggal_mengembalikan',null)
+                                    ->where("kode_buku", $data->kode_buku)
+                                    ->count();
 
+                            $stok_terbaru = $data->stok - $transaksi;
+                        ?>
 
                         <tr>
                             <td>{{ $no++ }}</td>
@@ -72,6 +103,7 @@
                             <td>{{ $data->penerbit }}</td>
 
                             <td>{{ $data->stok }}</td>
+                            <td>{{ $stok_terbaru }}</td>
 
                             @if(auth()->user()->id_role == 1)
                             <td>

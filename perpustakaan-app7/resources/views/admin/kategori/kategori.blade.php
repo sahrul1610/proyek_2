@@ -1,7 +1,17 @@
 
 @extends("Layout.v_template")
 @section('title','Katagori')
-
+@section('content-header')
+<h1>
+    @yield('title')
+    <small>@yield('title')</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a href="#">Buku</a></li>
+    <li class="active">@yield('title')</li>
+  </ol>
+@endsection
 @section("page_scripts")
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
