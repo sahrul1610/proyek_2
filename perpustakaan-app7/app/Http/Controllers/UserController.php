@@ -17,7 +17,7 @@ class UserController extends Controller
 
         $data = [
 
-            "users" => User::orderBy("name")->get()
+            "users" => User::orderBy("id", "DESC")->get()
         ];
         if(auth()->user()->id_role == 1)
         return view('/admin/petugas/v_petugas', $data);
