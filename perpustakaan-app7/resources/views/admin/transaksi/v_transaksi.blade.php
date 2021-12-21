@@ -77,7 +77,7 @@
               <td class="text-center">{{ $data->kode_transaksi}}</td>
               <td> @if(empty($data->getBuku->judul))
                 <i>
-                    <b>KOSONG JEH</b>
+                    <b>NULL</b>
                 </i>
                 @else
                 {{ $data->getBuku->judul }}
@@ -85,7 +85,7 @@
               <td>
                   @if(empty($data->getAnggota->nama_anggota))
                   <i>
-                    <b>KOSONG JEH</b>
+                    <b>NULL</b>
                 </i>
                   @else
                     {{$data->getAnggota->nama_anggota}}
@@ -148,10 +148,18 @@
               @elseif(auth()->user()->id_role == 1)
 
               <td>
-
-                {{ $data->getUser->name}}
+                  @if(empty($data->getUser->name))
+                  <i>
+                    <b>NULL</b>
+                </i>
+                  @else
+                    {{$data->getUser->name}}
+                  @endif
               </td>
                 <td>
+                    <a href="/transaksi/detail/{{ $data->id_transaksi }}" class="btn btn-primary btn-sm">
+                        Detail
+                      </a>
                     <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete{{ $data->id_transaksi }}">
                     <i class="fa fa-trash"></i>
                     </button>

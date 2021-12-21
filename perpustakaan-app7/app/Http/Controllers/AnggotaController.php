@@ -60,6 +60,7 @@ class AnggotaController extends Controller
             'alamat.required' => 'wajib diisi!!',
             'ttl_anggota.required' => 'wajib diisi!!',
             'no_hp.required' => 'wajib diisi!!',
+            'no_hp.numeric' => 'harus pakai angka!!',
 
 
         ];
@@ -101,7 +102,7 @@ class AnggotaController extends Controller
             'alamat.required' => 'wajib diisi!!',
             'tll_anggota.required' => 'wajib diisi!!',
             'no_hp.required' => 'wajib diisi!!',
-            'no_hp.number' => 'harus pakai angka!!',
+            'no_hp.numeric' => 'harus pakai angka!!',
 
 
 
@@ -112,7 +113,7 @@ class AnggotaController extends Controller
                 'nama_anggota' => 'required',
                 'alamat' => 'required',
                 'ttl_anggota' => 'required',
-                'no_hp' => 'required|number',
+                'no_hp' => 'required|numeric',
             ], $message);
 
             AnggotaModel::where("id_anggota", $request->id_anggota)->update([

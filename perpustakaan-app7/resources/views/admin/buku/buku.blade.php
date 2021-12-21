@@ -99,7 +99,7 @@
                             <td>
                                 @if(empty($data->getKategori->nama_kategori))
                                 <i>
-                                    <b>KOSONG JEH</b>
+                                    <b>NULL</b>
                                 </i>
                                 @else
                                 {{ $data->getKategori->nama_kategori }}

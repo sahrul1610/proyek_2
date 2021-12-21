@@ -34,6 +34,6 @@ class Transaksi extends Model
         // SELECT * FROM buku JOIN kategori ON buku.id_kategori = kategori.id_kategori
 
         // return $this->belongsTo(ModelYangInginDiJoin, AtributJoinChild , AtributJoinParent)
-        return $this->hasOne("App\Models\User", "id_petugas", "id");
+        return $this->hasOne("App\Models\User", "id", "id_petugas");
     }
 }
