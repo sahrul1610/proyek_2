@@ -96,7 +96,15 @@
                             <td>{{ $no++ }}</td>
                             <td>{{ $data->kode_buku}}
                             </td>
-                            <td>{{ $data->getKategori->nama_kategori }}</td>
+                            <td>
+                                @if(empty($data->getKategori->nama_kategori))
+                                <i>
+                                    <b>KOSONG JEH</b>
+                                </i>
+                                @else
+                                {{ $data->getKategori->nama_kategori }}
+                                @endif
+                            </td>
                             <td>{{ $data->judul }}</td>
                             <td>{{ $data->pengarang }}</td>
                             <td>{{ $data->tahun_terbit }}</td>

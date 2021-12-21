@@ -45,7 +45,7 @@ class RoleController extends Controller
 
         Role::create($request->all());
 
-        return redirect()->with('sukses','data berhasil di tambahkan');
+        return redirect('role')->with('sukses','data berhasil di tambahkan');
     }
 
     public function edit($id_role){

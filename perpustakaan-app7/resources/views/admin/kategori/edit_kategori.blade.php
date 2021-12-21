@@ -75,7 +75,7 @@
                             <td>{{ $data->nama_kategori}}</td>
                             <td>
                                 {{-- <a href="/buku/detail/{{ $data->id_kategori }}" class="btn btn-sm btn-success"><i class="fa fa-search"></i></a> --}}
-                                <a href="/buku/edit/{{ $data->id_kategori }}" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
+                                {{-- <a href="/buku/edit/{{ $data->id_kategori }}" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a> --}}
                                 <form action="/kategori/hapus" method="POST" style="display: inline;">
                                     {{ csrf_field() }}
                                     <input type="hidden" name="id_kategori" value="{{ $data->id_kategori }}">

@@ -106,7 +106,7 @@
             <div class="col-md-4">
               <div class="form-group">
                 <label> ID petugas </label>
-                <input type="text" class="form-control" name="id_petugas" value="{{ auth()->user()->id }}">
+                <input type="text" class="form-control" name="id_petugas" value="{{ auth()->user()->id }}" readonly>
                 <div class="text-danger">
                     @error('id_petugas')
                     {{ $message }}

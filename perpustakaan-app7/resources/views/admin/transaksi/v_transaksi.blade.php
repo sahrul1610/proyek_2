@@ -75,8 +75,22 @@
             <tr>
               <td class="text-center">{{ $no++ }}</td>
               <td class="text-center">{{ $data->kode_transaksi}}</td>
-              <td>{{ $data->getBuku->judul}}</td>
-              <td>{{ $data->getAnggota->nama_anggota}}</td>
+              <td> @if(empty($data->getBuku->judul))
+                <i>
+                    <b>KOSONG JEH</b>
+                </i>
+                @else
+                {{ $data->getBuku->judul }}
+                @endif</td>
+              <td>
+                  @if(empty($data->getAnggota->nama_anggota))
+                  <i>
+                    <b>KOSONG JEH</b>
+                </i>
+                  @else
+                    {{$data->getAnggota->nama_anggota}}
+                  @endif
+              </td>
               <td class="text-center">{{ $data->tanggal_pinjam}}</td>
               <td class="text-center">{{ $data->tanggal_kembali }}</td>
               <td class="text-center">

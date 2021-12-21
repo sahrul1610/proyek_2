@@ -44,7 +44,7 @@ class UserController extends Controller
             'name.required' => 'wajib diisi!!',
             'name.min' => 'Min 4 Karakter',
             'email.required' => 'wajib diisi!!',
-            //'email.email' => 'masukan email yang benar',
+            'email.email' => 'masukan email yang benar',
             'email.unique' => 'email ini sudah ada!!!',
             'password.required' => 'wajib diisi!!',
             'password.min' => 'Min 5 Karakter',
@@ -54,7 +54,7 @@ class UserController extends Controller
 
         $this->validate($request, [
             'name' => 'required|min:4|max:255',
-            'email' => 'required|email:dns|unique:users',
+            'email' => 'required|email:dns',
             'password' => 'required|min:5|max:255',
         ], $message);
 
